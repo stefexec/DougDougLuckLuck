@@ -1,0 +1,44 @@
+Common:
+  CommonLoot:
+  - iron_ingot
+  - gold_ingot
+  - emerald
+  - Spoons:10
+  CommonJackpot:
+  - diamond
+  - Spoons:100
+Rare:
+  RareLoot:
+  - diamond_chestplate
+  - diamond_axe
+  - diamond_pickaxe
+  - Spoons:20
+  RareJackpot:
+  - diamond_sword
+  - Spoons:200
+Epic:
+  EpicLoot:
+  - netherite_sword
+  - netherite_chestplate
+  - netherite_axe
+  - netherite_pickaxe
+  - Spoons:100
+  EpicJackpot:
+  - netherite_ingot
+  - Spoons:1000
+Legendary:
+  LegendaryLoot:
+  - netherite_ingot
+  - dragon_egg
+  - elytra
+  - Spoons:200
+  LegendaryJackpot:
+  - netherite_block
+  - Spoons:2000
+Stats:
+  Common: 0
+  Rare: 0
+  Epic: 0
+  Legendary: 0
+Shop:
+  Cooldown: 60

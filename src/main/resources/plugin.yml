@@ -1,0 +1,29 @@
+name: ScratchOffTickets
+version: '${version}'
+main: de.gurkenwerfer.scratchofftickets.ScratchOffTickets
+api-version: 1.19
+authors: [ Gurkenwerfer_ ]
+description: Adds Scratch Off Tickets to Spigot servers. Made for the DougDoug SMP
+commands:
+  scratchofftickets:
+      description: Scratch Off Tickets command
+      aliases: [ sot ]
+      usage: /scratchofftickets <give> <name> <rarity> <price> <id> <amount>
+      permission: scratchofftickets.command
+  lottery:
+      description: Lottery command
+      aliases: [ lotto ]
+      usage: /lottery
+      permissions:
+        -scratchofftickets.lottery
+        -scratchofftickets.lottery.bypass
+depend: [ Vault ]
+
+
+
+
+
+
+
+
+#      tab-completer: de.gurkenwerfer.scratchofftickets.ScratchOffTicketsCommandTabCompleter
