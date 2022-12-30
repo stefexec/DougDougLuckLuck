@@ -2,13 +2,13 @@ package de.gurkenwerfer.scratchofftickets.models;
 
 public class Ticket {
   private String name;
-  private String rarity;
+  private Rarity rarity;
   private int price;
   private int id;
   private int amount;
 
 
-public Ticket(String name, String rarity, int price, int id, int amount) {
+public Ticket(String name, Rarity rarity, int price, int id, int amount) {
     this.name = name;
     this.rarity = rarity;
     this.price = price;
@@ -22,10 +22,10 @@ public Ticket(String name, String rarity, int price, int id, int amount) {
     public void setName(String name) {
         this.name = name;
     }
-    public String getRarity() {
+    public Rarity getRarity() {
         return rarity;
     }
-    public void setRarity(String rarity) {
+    public void setRarity(Rarity rarity) {
         this.rarity = rarity;
     }
     public int getPrice() {

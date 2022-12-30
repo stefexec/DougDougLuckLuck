@@ -1,5 +1,6 @@
 package de.gurkenwerfer.scratchofftickets.commands;
 
+import de.gurkenwerfer.scratchofftickets.models.Rarity;
 import de.gurkenwerfer.scratchofftickets.models.Ticket;
 import de.gurkenwerfer.scratchofftickets.utils.TicketUtils;
 import org.bukkit.ChatColor;
@@ -17,11 +18,10 @@ public class onTicketCommand implements CommandExecutor {
                 sender.sendMessage(ChatColor.GREEN + "Usage: /scratchofftickets give <name> <rarity> <price> <id> <amount>");
                 return true;
             }
-            if (args[0].equalsIgnoreCase("give") && sender instanceof Player && sender.hasPermission("scratchofftickets.give") && args.length == 6) {
+            if (args[0].equalsIgnoreCase("give") && sender instanceof Player p && sender.hasPermission("scratchofftickets.give") && args.length == 6) {
 
-                Player p = (Player) sender;
                 // Create a new ticket object
-                Ticket ticket = new Ticket(args[1], args[2], Integer.parseInt(args[3]), Integer.parseInt(args[4]), Integer.parseInt(args[5]));
+                Ticket ticket = new Ticket(args[1], Rarity.valueOf(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), Integer.parseInt(args[5]));
                 // Give the player the ticket(s)
                 p.getInventory().addItem(TicketUtils.createTicket(ticket));
                 p.sendMessage(ChatColor.GREEN + "You have created a ticket!");

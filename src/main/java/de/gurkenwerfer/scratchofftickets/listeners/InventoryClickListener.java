@@ -1,6 +1,7 @@
 package de.gurkenwerfer.scratchofftickets.listeners;
 
 import de.gurkenwerfer.scratchofftickets.ScratchOffTickets;
+import de.gurkenwerfer.scratchofftickets.models.Rarity;
 import de.gurkenwerfer.scratchofftickets.models.Ticket;
 import de.gurkenwerfer.scratchofftickets.utils.TicketUtils;
 import net.milkbowl.vault.economy.Economy;
@@ -34,13 +35,13 @@ public class InventoryClickListener implements Listener {
                         Random random = new Random();
                         int randomInt = random.nextInt(100);
                         if (randomInt <= 90){
-                            addTicket(p, "Common", 1000, 1);
+                            addTicket(p, Rarity.COMMON, 1000, 1);
                         } else if (randomInt <= 95){
-                            addTicket(p, "Rare", 3000, 1);
+                            addTicket(p, Rarity.RARE, 3000, 1);
                         } else if (randomInt <= 98){
-                            addTicket(p, "Epic", 5000, 1);
+                            addTicket(p, Rarity.EPIC, 5000, 1);
                         } else {
-                            addTicket(p, "Legendary", 10000, 1);
+                            addTicket(p, Rarity.LEGENDARY, 10000, 1);
                         }
                         p.sendMessage(ChatColor.GREEN + "You have bought a random scratch-off ticket for $1000!");
                     } else {
@@ -57,7 +58,7 @@ public class InventoryClickListener implements Listener {
         }
     }
 
-    public void addTicket(Player p, String rarity, int price, int amount) {
+    public void addTicket(Player p, Rarity rarity, int price, int amount) {
         int id = plugin.getConfig().getInt("Stats." + rarity);
         id++;
         Ticket ticket = new Ticket("Scratch-Off Ticket", rarity, price, id, amount);

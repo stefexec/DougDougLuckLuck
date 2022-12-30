@@ -1,5 +1,6 @@
 package de.gurkenwerfer.scratchofftickets.utils;
 
+import de.gurkenwerfer.scratchofftickets.models.Rarity;
 import de.gurkenwerfer.scratchofftickets.models.Ticket;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -15,21 +16,21 @@ public class TicketUtils {
         ArrayList<String> lore = new ArrayList<>();
         assert ticketMeta != null;
         ticketMeta.setDisplayName(ticket.getName());
-        String rarity = ticket.getRarity();
+        Rarity rarity = ticket.getRarity();
         switch (rarity) {
-            case "Common" -> {
+            case COMMON -> {
                 ticketMeta.setCustomModelData(600);
-                lore.add("Rarity: " + ChatColor.DARK_RED + ticket.getRarity());
+                lore.add("Rarity: " + ChatColor.DARK_RED + ticket.getRarity().toString());
             }
-            case "Rare" -> {
+            case RARE -> {
                 ticketMeta.setCustomModelData(601);
                 lore.add("Rarity: " + ChatColor.BLUE + ticket.getRarity());
             }
-            case "Epic" -> {
+            case EPIC -> {
                 ticketMeta.setCustomModelData(602);
                 lore.add("Rarity: " + ChatColor.LIGHT_PURPLE + ticket.getRarity());
             }
-            case "Legendary" -> {
+            case LEGENDARY -> {
                 ticketMeta.setCustomModelData(603);
                 lore.add("Rarity: " + ChatColor.GOLD + ticket.getRarity());
             }
