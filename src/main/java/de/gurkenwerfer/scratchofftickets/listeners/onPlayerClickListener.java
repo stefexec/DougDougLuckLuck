@@ -2,6 +2,7 @@ package de.gurkenwerfer.scratchofftickets.listeners;
 
 import de.gurkenwerfer.scratchofftickets.ScratchOffTickets;
 import de.gurkenwerfer.scratchofftickets.models.Rarity;
+import io.lumine.mythic.bukkit.MythicBukkit;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Material;
@@ -45,7 +46,6 @@ public class onPlayerClickListener implements Listener {
         } else {
             rewardType = RewardType.JACKPOT;
         }
-
         List<String> loot = plugin.getConfig().getConfigurationSection(rarity.toString()).getStringList(rarity.toString() + rewardType);
         p.playSound(p.getLocation(), "ticket.redeem.1", 0.7f, 1);
         int index = random.nextInt(loot.size());
@@ -73,6 +73,23 @@ public class onPlayerClickListener implements Listener {
                 p.sendMessage("You won the JACKPOT amount of " + economy.format(amount) + " " + economy.currencyNamePlural() + "!");
             }
             i.setAmount(i.getAmount() - 1);
+
+        } else {
+            //check if the item name is a valid mythicmobs item
+            MythicBukkit mythicBukkit = MythicBukkit.inst();
+            if (mythicBukkit.getItemManager().getItem(item).isPresent()) {
+                ItemStack wonItem = (ItemStack) mythicBukkit.getItemManager().getItem(item).get().generateItemStack(1);
+                p.getInventory().addItem(wonItem);
+                if (rewardType == RewardType.LOOT) {
+                    p.sendMessage("You won a " + item + "!");
+                } else {
+                    p.sendMessage("You won the JACKPOT and got a " + item + "!");
+                }
+                i.setAmount(i.getAmount() - 1);
+            } else {
+                p.sendMessage("An error occurred while redeeming the ticket. Please contact an administrator.");
+            }
+
 
         }
     }
