@@ -30,7 +30,6 @@ public final class ScratchOffTickets extends JavaPlugin {
             log.severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
             System.out.println("Vault not found! Disabling plugin...");
             getServer().getPluginManager().disablePlugin(this);
-            return;
         }
     }
 
