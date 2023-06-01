@@ -5,6 +5,7 @@ import de.gurkenwerfer.scratchofftickets.models.Rarity;
 import io.lumine.mythic.bukkit.MythicBukkit;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -68,7 +69,7 @@ public class onPlayerClickListener implements Listener {
             if (!response.transactionSuccess())  p.sendMessage("An error occurred: " + response.errorMessage);
 
             if (rewardType.equals(RewardType.LOOT)) {
-                p.sendMessage("You won " + economy.format(amount) + " " + economy.currencyNamePlural() + "!");
+                p.sendMessage("You won " + economy.format(amount) + " " + ChatColor.translateAlternateColorCodes('&',economy.currencyNamePlural())+ "!");
             } else {
                 p.sendMessage("You won the JACKPOT amount of " + economy.format(amount) + " " + economy.currencyNamePlural() + "!");
             }
